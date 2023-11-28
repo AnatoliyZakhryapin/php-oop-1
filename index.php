@@ -24,9 +24,9 @@ class Production {
 
 };
 
-$ScaryMovie = new Production ('Scary movie', ['italiano', 'inglese'], true, 8,5);
-$ArmorOfGod = new Production ('Armor of God', ['inglese'], true, 10);
-var_dump($ScaryMovie, $ArmorOfGod );
+$scary_movie = new Production ('Scary movie', ['italiano', 'inglese'], true, 8,5);
+$scary_movie = new Production ('Armor of God', ['inglese'], true, 10);
+var_dump($scary_movie, $armor_of_god);
 
 
 ?>
