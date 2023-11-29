@@ -13,8 +13,3 @@ class Actor {
         $this->birth_day = $_birth_day;
     }
 }
-
-$jackie_chan = new Actor ('Jackie', 'Chan', '7/04/1954' );
-$marlon_wayans = new Actor ('Marlon', 'Wayans', '23/07/1972');
-$shawn_wayans = new Actor ('Shawn','Wayans', '19/01/1791');
-$alan_tam = new Actor ('Alan', 'Tam', '23/08/1950');
