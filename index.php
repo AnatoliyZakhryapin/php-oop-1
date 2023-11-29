@@ -12,6 +12,11 @@ $shawn_wayans = new Actor('Shawn', 'Wayans', '19/01/1791');
 $alan_tam = new Actor('Alan', 'Tam', '23/08/1950');
 $jenna_ortega = new Actor('Jenna', 'Ortega', '27/09/2002');
 $hunter_doohan = new Actor('Hunter', 'Doohan', '19/01/1994');
+$melisa_roxburgh = new Actor('Melisa', 'Roxburgh', '10/12/1992');
+$wentworth_miller = new Actor('Wentworth', 'Miller', '02/06/1972');
+$dominic_purcell = new Actor('Dominic', 'Purcel', '17/02/1970');
+$rowan_atkinson = new Actor ('Rowan', 'Atkinson', '06/01/1955');
+$jeremy_brett = new Actor ('Jeremy', 'Brett', '03/11/1933');
 
 // Nuove istanze di classe Movie
 $scary_movie_1 = new Movie('Scary movie 1', ['italiano', 'inglese'], true, [$marlon_wayans, $shawn_wayans], 6, './img/img1.jpg', '1000', '2 ore');
@@ -22,7 +27,10 @@ $who_am_i = new Movie('Who i am ?', ['cinese'], true, [$jackie_chan, new Actor('
 
 // Nuove istanze di classe Serie
 $wednesday = new Serie('Wednesday', ['inglese'], true, [$jenna_ortega, $hunter_doohan], 8, './img/img7.jpg', 3);
-
+$manifest = new Serie('Manifest', ['inglese'], true, [$melisa_roxburgh], 8, './img/img8.jpg', 3);
+$prison_break = new Serie('Prison Break', ['inglese'], true, [$wentworth_miller, $dominic_purcell], 9, './img/img9.jpg', 3);
+$mr_bean = new Serie ('Mr.Bean', ['italiano', 'inglese'], true, [$rowan_atkinson], 10, './img/img10.jpg', 10);
+$sherlock_holmes = new Serie ('Sherlock Holmes', ['italiano', 'inglese'], true, [$rowan_atkinson], 10, './img/img11.jpg', 4);
 
 // Array con tutti istanze di classe Production
 $production_instances = [
@@ -32,7 +40,11 @@ $production_instances = [
     $armor_of_god_1,
     $armor_of_god_2,
     $who_am_i,
-    $wednesday
+    $wednesday,
+    $manifest,
+    $prison_break,
+    $mr_bean,
+    $sherlock_holmes
 ];
 
 ?>
