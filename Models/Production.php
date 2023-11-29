@@ -75,4 +75,16 @@ class Production {
         }
        return $vote_string;
     }
+
+    public function isMovie(){
+        if ($this instanceof Movie) {
+            echo 'Yes, ists MOVIE';
+        } else {
+            echo 'NOOO ';
+        }
+    }
+
+    public function getAdditionalInfos() {
+        return [];
+    }
 };
