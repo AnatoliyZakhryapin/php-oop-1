@@ -1,33 +1,31 @@
 <?php
 
-class Production {
-    public $title;
-    public $language;
-    public $subtitle;
-    public $rating;
+require_once __DIR__ . './Models/Production.php'; 
+require_once __DIR__ . './Models/Actors.php'; 
 
-    function __construct( String $_title, Array $_language, Bool $_subtitle, Int $_rating){
-        $this->title = $_title;
-        $this->language = $_language;
-        $this->subtitle = $_subtitle;
-        $this->setRating($_rating);
-    }
+// Nuove istanze di classe Actors
+$jackie_chan = new Actor ('Jackie', 'Chan', '7/04/1954' );
+$marlon_wayans = new Actor ('Marlon', 'Wayans', '23/07/1972');
+$shawn_wayans = new Actor ('Shawn','Wayans', '19/01/1791');
+$alan_tam = new Actor ('Alan', 'Tam', '23/08/1950');
 
-    public function setRating($vote){
-        if(is_numeric($vote) && $vote >= 0){
-            $this->rating = intval($vote);
-        } else {
-            $this->rating = 0;
-            var_dump('Il parametro $rate non è corretto');
-        }
-    }
+// Nuove istanze di classe Production
+$scary_movie_1 = new Production ('Scary movie 1', ['italiano', 'inglese'], true, [$marlon_wayans, $shawn_wayans], 6, './img/img1.jpg');
+$scary_movie_2 = new Production ('Scary movie 2', ['italiano', 'inglese'], true, [$marlon_wayans, $shawn_wayans], 7, './img/img2.jpg');
+$armor_of_god_1 = new Production ('Armor of God 1', ['inglese'], false, [$jackie_chan, $alan_tam], 10, './img/img3.jpg');
+$armor_of_god_2 = new Production ('Armor of God 2', ['inglese'], false, [$jackie_chan, $alan_tam], 10, './img/img4.jpg');
+$who_am_i = new Production ('Who i am ?', ['cinese'], true, [$jackie_chan, new Actor ('Mirai', 'Yamamoto', '11/04/1974' )], 10, './img/img6.jpg');
 
-};
 
-$scary_movie = new Production ('Scary movie', ['italiano', 'inglese'], true, 8,5);
-$scary_movie = new Production ('Armor of God', ['inglese'], true, 10);
-var_dump($scary_movie, $armor_of_god);
-
+// Array con tutti istanze di classe Production
+$production_instances = [
+    $scary_movie_1, 
+    $scary_movie_2,
+    new Production ('Scray movie 3', ['italiano'], false,[$marlon_wayans, $shawn_wayans, new Actor ('Anna', 'Faris', '29/11/1976' )], 0, './img/img5.jpg'), 
+    $armor_of_god_1, 
+    $armor_of_god_2, 
+    $who_am_i
+];
 
 ?>
 <!DOCTYPE html>
@@ -35,9 +33,39 @@ var_dump($scary_movie, $armor_of_god);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/08d5002177.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <title>Document</title>
 </head>
 <body>
-    <h1>Php-OOP</h1>
+
+    <main>
+        <section class="py-5">
+            <div class="container">
+                <div class="row row-gap-5">
+                    <?php foreach($production_instances as $movie) { ?>
+                            <div class="col">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="<?php echo $movie->getSrcPoster(); ?>" class="card-img-top" alt="..." style="height: 400px">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo $movie->title; ?></h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Lingue: <?php echo $movie->getLanguageAsString(); ?></li>
+                                        <li class="list-group-item">Subtitle: <?php echo $movie->hasSubtitle(); ?></li>
+                                        <li class="list-group-item">Attori: <?php echo $movie->printActors(); ?></li>
+                                        <li class="list-group-item">Vote: <?php echo $movie->printVote() ?></li>
+                                    </ul>
+                                </div>
+                            </div>    
+                    <?php } ?>   
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
