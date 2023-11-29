@@ -2,6 +2,7 @@
 
 require_once __DIR__ . './Models/Production.php'; 
 require_once __DIR__ . './Models/Actors.php'; 
+require_once __DIR__ . './Models/Movie.php';
 
 // Nuove istanze di classe Actors
 $jackie_chan = new Actor ('Jackie', 'Chan', '7/04/1954' );
@@ -10,18 +11,18 @@ $shawn_wayans = new Actor ('Shawn','Wayans', '19/01/1791');
 $alan_tam = new Actor ('Alan', 'Tam', '23/08/1950');
 
 // Nuove istanze di classe Production
-$scary_movie_1 = new Production ('Scary movie 1', ['italiano', 'inglese'], true, [$marlon_wayans, $shawn_wayans], 6, './img/img1.jpg');
-$scary_movie_2 = new Production ('Scary movie 2', ['italiano', 'inglese'], true, [$marlon_wayans, $shawn_wayans], 7, './img/img2.jpg');
-$armor_of_god_1 = new Production ('Armor of God 1', ['inglese'], false, [$jackie_chan, $alan_tam], 10, './img/img3.jpg');
-$armor_of_god_2 = new Production ('Armor of God 2', ['inglese'], false, [$jackie_chan, $alan_tam], 10, './img/img4.jpg');
-$who_am_i = new Production ('Who i am ?', ['cinese'], true, [$jackie_chan, new Actor ('Mirai', 'Yamamoto', '11/04/1974' )], 10, './img/img6.jpg');
+$scary_movie_1 = new Movie ('Scary movie 1', ['italiano', 'inglese'], true, [$marlon_wayans, $shawn_wayans], 6, './img/img1.jpg', '1000', '2 ore');
+$scary_movie_2 = new Movie ('Scary movie 2', ['italiano', 'inglese'], true, [$marlon_wayans, $shawn_wayans], 7, './img/img2.jpg', '1000', '2 ore');
+$armor_of_god_1 = new Movie ('Armor of God 1', ['inglese'], false, [$jackie_chan, $alan_tam], 10, './img/img3.jpg', '1000', '2 ore');
+$armor_of_god_2 = new Movie ('Armor of God 2', ['inglese'], false, [$jackie_chan, $alan_tam], 10, './img/img4.jpg', '1000', '2 ore');
+$who_am_i = new Movie ('Who i am ?', ['cinese'], true, [$jackie_chan, new Actor ('Mirai', 'Yamamoto', '11/04/1974' )], 10, './img/img6.jpg', '1000', '2 ore');
 
 
 // Array con tutti istanze di classe Production
 $production_instances = [
     $scary_movie_1, 
     $scary_movie_2,
-    new Production ('Scray movie 3', ['italiano'], false,[$marlon_wayans, $shawn_wayans, new Actor ('Anna', 'Faris', '29/11/1976' )], 0, './img/img5.jpg'), 
+    new Movie ('Scray movie 3', ['italiano'], false,[$marlon_wayans, $shawn_wayans, new Actor ('Anna', 'Faris', '29/11/1976' )], 0, './img/img5.jpg', '1000', '2 ore'), 
     $armor_of_god_1, 
     $armor_of_god_2, 
     $who_am_i
@@ -44,19 +45,21 @@ $production_instances = [
         <section class="py-5">
             <div class="container">
                 <div class="row row-gap-5">
-                    <?php foreach($production_instances as $movie) { ?>
+                    <?php foreach($production_instances as $product) { ?>
                             <div class="col">
                                 <div class="card" style="width: 18rem;">
-                                    <img src="<?php echo $movie->getSrcPoster(); ?>" class="card-img-top" alt="..." style="height: 400px">
+                                    <img src="<?php echo $product->getSrcPoster(); ?>" class="card-img-top" alt="..." style="height: 400px">
                                     <div class="card-body">
-                                        <h5 class="card-title"><?php echo $movie->title; ?></h5>
+                                        <h5 class="card-title"><?php echo $product->title; ?></h5>
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Lingue: <?php echo $movie->getLanguageAsString(); ?></li>
-                                        <li class="list-group-item">Subtitle: <?php echo $movie->hasSubtitle(); ?></li>
-                                        <li class="list-group-item">Attori: <?php echo $movie->printActors(); ?></li>
-                                        <li class="list-group-item">Vote: <?php echo $movie->printVote() ?></li>
+                                        <li class="list-group-item">Profit: <?php echo $product->getProfit(); ?></li>
+                                        <li class="list-group-item">Durata: <?php echo $product->getDuration(); ?></li>
+                                        <li class="list-group-item">Lingue: <?php echo $product->getLanguageAsString(); ?></li>
+                                        <li class="list-group-item">Subtitle: <?php echo $product->hasSubtitle(); ?></li>
+                                        <li class="list-group-item">Attori: <?php echo $product->printActors(); ?></li>
+                                        <li class="list-group-item">Vote: <?php echo $product->printVote() ?></li>
                                     </ul>
                                 </div>
                             </div>    
