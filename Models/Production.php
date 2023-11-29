@@ -64,16 +64,16 @@ class Production {
     }
 
     public function printVote() {
+        $array = [];
         $vote = $this->rating;
-        $vote_string = '';
         for($i = 0; $i < 10; $i++) {
             if($i < $vote){
-                $vote_string .=  '<span><i class="fa-solid fa-star" style="color: #fedd06;"></i></span>';
+                $array[]=  "fa-solid";
             } else {
-                $vote_string .=  '<span><i class="fa-regular fa-star" style="color: #fedd06;"></i></span>';
+                $array[]=  "fa-regular";
             }
         }
-       return $vote_string;
+       return $array;
     }
 
     public function getAdditionalInfos() {

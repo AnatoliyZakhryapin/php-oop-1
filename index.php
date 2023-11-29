@@ -69,7 +69,11 @@ $production_instances = [
                                     <li class="list-group-item">Lingue: <?php echo $product->getLanguageAsString(); ?></li>
                                     <li class="list-group-item">Subtitle: <?php echo $product->hasSubtitle(); ?></li>
                                     <li class="list-group-item">Attori: <?php echo $product->printActors(); ?></li>
-                                    <li class="list-group-item">Vote: <?php echo $product->printVote() ?></li>
+                                    <li class="list-group-item">Vote: 
+                                        <?php foreach ($product->printVote() as $star) {?>
+                                            <i class="<?php echo $star?> fa-star" style="color: #fedd06; width: 12px;"></i>
+                                        <?php } ?>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -78,7 +82,6 @@ $production_instances = [
             </div>
         </section>
     </main>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
