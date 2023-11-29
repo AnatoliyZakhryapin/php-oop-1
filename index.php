@@ -3,19 +3,25 @@
 require_once __DIR__ . './Models/Production.php'; 
 require_once __DIR__ . './Models/Actors.php'; 
 require_once __DIR__ . './Models/Movie.php';
+require_once __DIR__ . './Models/Serie.php';
 
 // Nuove istanze di classe Actors
 $jackie_chan = new Actor ('Jackie', 'Chan', '7/04/1954' );
 $marlon_wayans = new Actor ('Marlon', 'Wayans', '23/07/1972');
 $shawn_wayans = new Actor ('Shawn','Wayans', '19/01/1791');
 $alan_tam = new Actor ('Alan', 'Tam', '23/08/1950');
+$jenna_ortega = new Actor ('Jenna', 'Ortega', '27/09/2002');
+$hunter_doohan = new Actor ('Hunter', 'Doohan', '19/01/1994');
 
-// Nuove istanze di classe Production
+// Nuove istanze di classe Movie
 $scary_movie_1 = new Movie ('Scary movie 1', ['italiano', 'inglese'], true, [$marlon_wayans, $shawn_wayans], 6, './img/img1.jpg', '1000', '2 ore');
 $scary_movie_2 = new Movie ('Scary movie 2', ['italiano', 'inglese'], true, [$marlon_wayans, $shawn_wayans], 7, './img/img2.jpg', '1000', '2 ore');
 $armor_of_god_1 = new Movie ('Armor of God 1', ['inglese'], false, [$jackie_chan, $alan_tam], 10, './img/img3.jpg', '1000', '2 ore');
 $armor_of_god_2 = new Movie ('Armor of God 2', ['inglese'], false, [$jackie_chan, $alan_tam], 10, './img/img4.jpg', '1000', '2 ore');
 $who_am_i = new Movie ('Who i am ?', ['cinese'], true, [$jackie_chan, new Actor ('Mirai', 'Yamamoto', '11/04/1974' )], 10, './img/img6.jpg', '1000', '2 ore');
+
+// Nuove istanze di classe Serie
+$wednesday = new Serie ('Wednesday', ['inglese'], true, [$jenna_ortega, $hunter_doohan], 8, './img/img7.jpg', 3);
 
 
 // Array con tutti istanze di classe Production
@@ -25,7 +31,8 @@ $production_instances = [
     new Movie ('Scray movie 3', ['italiano'], false,[$marlon_wayans, $shawn_wayans, new Actor ('Anna', 'Faris', '29/11/1976' )], 0, './img/img5.jpg', '1000', '2 ore'), 
     $armor_of_god_1, 
     $armor_of_god_2, 
-    $who_am_i
+    $who_am_i,
+    $wednesday 
 ];
 
 ?>
